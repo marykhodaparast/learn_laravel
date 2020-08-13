@@ -19,3 +19,8 @@ php artisan make:migration add_deleted_at_posts_table --table="posts"
 if you have problem with php artisan it means when you wrote php artisan
 it didn't work you should delete all your tables from phpmyadmin and then
 delete the last migration and now it will work :)
+
+11-67:(Many to Many relationship part1)
+php artisan make:model Role -m => -m means migration
+php artisan make:migration create_users_roles_table --create=role_user
+
