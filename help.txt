@@ -14,3 +14,8 @@ command+click on the Model goes us to Model.php
 
 10-57:
 php artisan make:migration add_deleted_at_posts_table --table="posts"
+
+11-66:
+if you have problem with php artisan it means when you wrote php artisan
+it didn't work you should delete all your tables from phpmyadmin and then
+delete the last migration and now it will work :)
