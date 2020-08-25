@@ -164,6 +164,9 @@ Route::get('/user/pivot',function (){
        return $role->pivot->created_at;
     }
 });
+Route::get('/user/country',function (){
+
+});
 
 
 
