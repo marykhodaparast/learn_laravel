@@ -149,6 +149,14 @@ Route::get('/posts',function (){
         echo  $post->title."<br>";//if we use return just one of the posts is returned
     }
 });
+//Many to Many relationship
+Route::get('/user/{id}/role',function ($id){
+//    $user = User::find($id);
+//    foreach($user->roles as $role){
+//        return $role->name;
+//    }
+    return User::find($id)->roles()->orderBy('id','desc')->get();
+});
 
 
 
