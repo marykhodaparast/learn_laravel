@@ -171,6 +171,13 @@ Route::get('/user/country',function (){
         return $post->title;
     }
 });
+//polymorphic relations
+Route::get('/user/{id}/photos',function($id){
+    $user = User::find($id);
+    foreach($user->photos as $photo){
+        echo $photo->path."<br>";
+    }//we can change user to post because we have photos relation for posts too...
+});
 
 
 

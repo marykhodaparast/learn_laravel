@@ -48,4 +48,7 @@ class User extends Authenticatable
         //return $this->belongToMany('App\Role','tableName for example user_roles','user_id','role_id');
         //the best name for table is role_user
     }
+    public function photos(){
+        return $this->morphMany('App\Photo','imageable');
+    }
 }
