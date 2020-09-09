@@ -3,6 +3,7 @@
 use App\Post;
 use App\User;
 use App\Country;
+use App\Photo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -177,6 +178,12 @@ Route::get('/user/{id}/photos',function($id){
     foreach($user->photos as $photo){
         echo $photo->path."<br>";
     }//we can change user to post because we have photos relation for posts too...
+});
+//polymetric relations reverse
+Route::get('/photo/{id}/post',function($id){
+    $photo = Photo::findOrFail($id);
+    return $photo->imageable;//with this you can find a post or a user that these photo belongs to 
+
 });
 
 
