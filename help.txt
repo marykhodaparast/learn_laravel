@@ -25,5 +25,11 @@ php artisan make:model Role -m => -m means migration
 php artisan make:migration create_users_roles_table --create=role_user
 
 11-72:
-php artisan make:model Photo -m 
+php artisan make:model Photo -m
+
+12:
+php artisan tinker
+$post = App\Post::where('id',4)->first();
+and do all queries you like 
+exit
 
