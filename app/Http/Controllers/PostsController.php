@@ -14,7 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -37,6 +38,7 @@ class PostsController extends Controller
     {
         //return $request->all()
         Post::create($request->all());
+        return redirect('/posts');
 
         // $input = $request->all();
         // $input['title'] = $request->title;
