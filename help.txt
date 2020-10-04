@@ -36,6 +36,10 @@ exit
 19:
 132
 search laravel illuminate/html collective -> https://laravelcollective.com/docs/5.2/html
+138
+how to create snippets with phpstorm:
+phpstorm->preferences->live template->title,description->define Everywhere and in the code write title and then click tab so that
+the template comes
 
 
 
