@@ -30,6 +30,12 @@ php artisan make:model Photo -m
 12:
 php artisan tinker
 $post = App\Post::where('id',4)->first();
-and do all queries you like 
+and do all queries you like
 exit
+
+19:
+132
+search laravel illuminate/html collective -> https://laravelcollective.com/docs/5.2/html
+
+
 
