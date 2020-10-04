@@ -39,7 +39,7 @@ class PostsController extends Controller
         //return $request->all()
         $this->validate($request,[
             'title' => 'required|max:60',//max:60 characters
-            'content' => 'required'
+            //'content' => 'required'
         ]);
         Post::create($request->all());
         return redirect('/posts');

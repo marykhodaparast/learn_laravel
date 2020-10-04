@@ -206,7 +206,9 @@ use Illuminate\Support\Facades\Route;
 | Crud Application
 |-------------------------------------------------------------------------
 */
-Route::resource('/posts','PostsController');
+Route::group(['middleware'=>'web'],function(){
+    Route::resource('/posts','PostsController');
+});
 
 
 
