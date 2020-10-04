@@ -37,6 +37,10 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //return $request->all()
+        $this->validate($request,[
+            'title' => 'required|max:60',//max:60 characters
+            'content' => 'required'
+        ]);
         Post::create($request->all());
         return redirect('/posts');
 
