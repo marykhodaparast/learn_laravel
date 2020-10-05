@@ -220,9 +220,16 @@ Route::group(['middleware'=>'web'],function(){
         echo Carbon::now()->yesterday();
     });
 });
+//Route for accessors
 Route::get('/getname',function(){
     $user = User::findOrFail(1);
     echo $user->name;
+});
+//Route for mutator
+Route::get('/setname',function (){
+     $user = User::findOrFail(1);
+     $user->name = "william";
+     $user->save();
 });
 
 
