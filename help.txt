@@ -41,5 +41,9 @@ how to create snippets with phpstorm:
 phpstorm->preferences->live template->title,description->define Everywhere and in the code write title and then click tab so that
 the template comes
 
+20:
+140
+composer search Carbon ->shows packages for using Carbon ->nesbot/carbon
+
 
 

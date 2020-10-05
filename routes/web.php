@@ -7,6 +7,7 @@ use App\Photo;
 use App\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -208,6 +209,16 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['middleware'=>'web'],function(){
     Route::resource('/posts','PostsController');
+    Route::get('/dates',function (){
+        $date = new DateTime('+1 week');
+        echo $date->format('m-d-Y');
+        echo "<br>";
+        echo Carbon::now()->addDays(10)->diffForHumans();
+        echo "<br>";
+        echo Carbon::now()->subMonths(5)->diffForHumans();
+        echo "<br>";
+        echo Carbon::now()->yesterday();
+    });
 });
 
 
