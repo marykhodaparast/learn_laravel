@@ -220,6 +220,10 @@ Route::group(['middleware'=>'web'],function(){
         echo Carbon::now()->yesterday();
     });
 });
+Route::get('/getname',function(){
+    $user = User::findOrFail(1);
+    echo $user->name;
+});
 
 
 
