@@ -43,8 +43,11 @@ class PostsController extends Controller
         //     'title' => 'required|max:60',//max:60 characters
         //     //'content' => 'required'
         // ]);
-        Post::create($request->all());
-        return redirect('/posts');
+//        Post::create($request->all());
+//        return redirect('/posts');
+        $file = $request->file('file');
+        echo $file->getClientOriginalName()."<br>". $file->getSize();
+
 
         // $input = $request->all();
         // $input['title'] = $request->title;
