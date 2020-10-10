@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    public $directory = "/images/";
     //Post -> table is posts
      use SoftDeletes;
     /**
@@ -28,5 +29,9 @@ class Post extends Model
     }
     public static function scopeHello($query){
         return $query->orderBy('id','desc')->get();
+    }
+    //Accessor
+    public function getPathAttribute($value){
+        return $this->directory . $value;
     }
 }
