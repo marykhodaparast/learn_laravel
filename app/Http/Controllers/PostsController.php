@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         $posts = Post::hello();
         //dd($posts);
-        return view('posts.index',compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -33,11 +33,19 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreatePostRequest $request)
     {
+        $input = $request->all();
+        if ($file = $request->file('file')) {//if this file exists
+            $name = $file->getClientOriginalName();
+            $file->move('images', $name);//the images folder will be created in public directory if there is not
+            $input['path'] = $name;
+
+        }
+        Post::create($input);
         //return $request->all()
         // $this->validate($request,[
         //     'title' => 'required|max:60',//max:60 characters
@@ -45,8 +53,9 @@ class PostsController extends Controller
         // ]);
 //        Post::create($request->all());
 //        return redirect('/posts');
-        $file = $request->file('file');
-        echo $file->getClientOriginalName()."<br>". $file->getSize();
+
+//        $file = $request->file('file');
+//        echo $file->getClientOriginalName()."<br>". $file->getSize();
 
 
         // $input = $request->all();
@@ -61,32 +70,32 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.show',compact('post'));
+        return view('posts.show', compact('post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit',compact('post'));
+        return view('posts.edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,7 +108,7 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -109,12 +118,16 @@ class PostsController extends Controller
         //$post->delete();
         return redirect('/posts');
     }
-    public function contact(){
-        $people = ['edwin','Joes','James','Jimi'];
-        return view('contact',compact('people'));
+
+    public function contact()
+    {
+        $people = ['edwin', 'Joes', 'James', 'Jimi'];
+        return view('contact', compact('people'));
     }
-    public function show_post($id,$name,$password){
+
+    public function show_post($id, $name, $password)
+    {
         //return view('post')->with('id',$id);
-        return view('post',compact('id','name','password'));
+        return view('post', compact('id', 'name', 'password'));
     }
 }
